@@ -1,0 +1,43 @@
+class Solution {
+    public boolean lemonadeChange(int[] bills) {
+        //Since we have no bills to begin with
+        int fives = 0;
+        int tens = 0;
+
+        //iterating each element in the array
+        for ( int b : bills )
+        {
+            if (b == 5)
+            {
+                ++fives;
+            }
+            else if (b == 10)
+            {
+                if(fives == 0 ) { return false; }
+                ++tens;
+                --fives;
+            }
+            else if (b == 20)
+            {
+                /*Here we have two options for the change:
+                1. Return 10 + 5
+                2. Return all 5s */
+                if ( fives >=1 && tens >=1 )
+                {
+                    --tens;
+                    --fives;
+                }
+                else if ( fives >=3 )
+                {
+                    fives-=3;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+        }
+
+        return true;
+    }
+}

@@ -1,0 +1,13 @@
+class Solution {
+    public double myPow(double x, int n) {
+        if ( n==0 ) { return 1; }
+
+        double temp = myPow(x, n / 2);
+
+		return n % 2 == 0
+			? temp * temp // n is even
+			: n > 0       // n is odd
+				? (temp * temp) * x   // n is positive
+				: (temp * temp) / x;  // n is negative
+    }
+}

@@ -1,0 +1,19 @@
+class Solution {
+    public int maxProfit(int[] prices) {
+        /* I've used an iterative solution where each element in the
+        array list will be tested for minumum loss to buy and max profit it can provide */
+        int minLoss = Integer.MAX_VALUE;
+        int maxProf = 0;
+
+        /* NOTE : Since the max profit will always be >=0, I've initialized the profit
+        variable as such */
+
+        for (int p: prices)
+        {
+            minLoss = Math.min( p, minLoss );
+            maxProf = Math.max( ( p - minLoss ), maxProf );
+        }
+
+        return maxProf;
+    }
+}
