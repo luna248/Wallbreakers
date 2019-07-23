@@ -1,0 +1,23 @@
+class Solution {
+    public int rob(int[] nums) {
+        //Cases with a standard response
+        if(nums.length == 0){ return 0; }
+        if(nums.length == 1){ return nums[0]; }
+        if(nums.length == 2){ return Math.max(nums[0], nums[1]); }
+
+        //Creating two new array to evaluate options (with and without robbing the first house)
+        int[] robMax = new int[nums.length];
+        robMax[0]=nums[0]; robMax[1]= Math.max(nums[0], nums[1]);
+
+        int[] robMax_without_first = new int[nums.length];
+        robMax_without_first[0]=nums[1]; robMax_without_first[1] = Math.max(nums[1], nums[2]);
+
+        for(int i=2; i< robMax.length-1 ; i++)
+        {
+            robMax[i] = Math.max ( robMax[i-1], ( robMax[i-2] + nums[i] ) );
+            robMax_without_first[i]= Math.max ( robMax_without_first[i-1], robMax_without_first[i-2]+nums[i+1]);
+        }
+
+        return Math.max(robMax[nums.length-2], robMax_without_first[nums.length-2]);
+    }
+}
