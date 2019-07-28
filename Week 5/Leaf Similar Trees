@@ -1,0 +1,39 @@
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode(int x) { val = x; }
+ * }
+ */
+class Solution {
+    public boolean leafSimilar(TreeNode root1, TreeNode root2) {
+        //Get the root-value sequence of root1
+        ArrayList<Integer> root1LVS = new ArrayList<Integer>();
+        getLVS( root1, root1LVS );
+
+        //Get the root-value sequence of root2
+        ArrayList<Integer> root2LVS = new ArrayList<Integer>();
+        getLVS( root2, root2LVS );
+
+        return root1LVS.equals(root2LVS);
+    }
+
+    //The function uses recursion to perform depth-first search on the tree and get the sequence
+    public void getLVS( TreeNode temp, ArrayList<Integer> LVS ){
+        if(temp==null)
+        {
+            return;
+        }
+
+        if( temp.left==null && temp.right==null )
+        {
+            LVS.add( temp.val );
+        }
+
+        getLVS( temp.left, LVS );
+        getLVS( temp.right, LVS );
+
+    }
+}

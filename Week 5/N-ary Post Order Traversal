@@ -1,0 +1,42 @@
+/*
+// Definition for a Node.
+class Node {
+    public int val;
+    public List<Node> children;
+
+    public Node() {}
+
+    public Node(int _val,List<Node> _children) {
+        val = _val;
+        children = _children;
+    }
+};
+*/
+class Solution {
+    public List<Integer> postorder (Node root) {
+        List<Integer> seq = new ArrayList<Integer>();
+        postOrder( root, seq );
+        return seq;
+    }
+
+    public List<Integer> postOrder ( Node root, List<Integer> sequence ) {
+        if( root == null ) { return sequence; }
+
+        //Since it's post order traversal all the children nodes will be added first and then all the parent nodes in order
+        if( root.children == null )
+        {
+            sequence.add( root.val );
+        }
+        else
+        {
+            //For loop to iterate the children nodes list since it's a ternary tree
+            for( Node n: root.children )
+            {
+                postOrder(n, sequence);
+            }
+            sequence.add(root.val);
+        }
+
+        return sequence;
+    }
+}
