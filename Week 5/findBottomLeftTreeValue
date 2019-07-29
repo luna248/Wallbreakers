@@ -1,0 +1,36 @@
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode(int x) { val = x; }
+ * }
+ */
+class Solution {
+    /* This solution also uses global variable to keep track of the depth of the leftmost leaf and the value of it*/
+    int maxDepth = -1;
+    int leftMostVal;
+
+    public int findBottomLeftValue(TreeNode root) {
+        getNext(root, 0);
+        return leftMostVal;
+    }
+
+    //This function takes in the node along with the depth of that node
+    public void getNext( TreeNode temp, int depth ) {
+        if (temp == null) { return; }
+
+        /*Even tho it's not explicitly mentioned that the left val has been counted, since
+        the function evaluates temp.left before temp.right, the depth would've already
+        increased for this bit and the right value isn't taken into account in this if loop
+        in any case */
+        if (depth > maxDepth)
+        {
+            maxDepth = depth;
+            leftMostVal = temp.val;
+        }
+        getNext(temp.left, depth + 1);
+        getNext(temp.right, depth + 1);
+    }
+}

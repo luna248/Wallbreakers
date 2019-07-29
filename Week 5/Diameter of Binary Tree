@@ -1,0 +1,31 @@
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode(int x) { val = x; }
+ * }
+ */
+class Solution {
+
+    //Global variable
+    int diameter=0;
+
+    public int diameterOfBinaryTree(TreeNode root) {
+        if(root==null) { return 0; }
+        getDiameter(root);
+        return diameter-1;
+    }
+
+    //Calculate the max depth from either side for each node and print the max value of those
+    private int getDiameter(TreeNode node) {
+        if (node == null) { return 0; }
+
+        int leftMax = getDiameter(node.left);
+        int rightMax = getDiameter(node.right);
+
+        diameter = Math.max(diameter, leftMax + rightMax + 1);
+        return Math.max(leftMax, rightMax) + 1;
+    }
+}

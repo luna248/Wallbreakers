@@ -1,0 +1,27 @@
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode(int x) { val = x; }
+ * }
+ */
+class Solution {
+    public int sumOfLeftLeaves(TreeNode root) {
+        if(root == null ){ return 0; }
+        return leafVal(root, false);
+    }
+
+    /*leafVal is a function with 2 parameters:
+    temp: Node passed
+    isLeft: Boolean determining whether given node is a left leaf or not)
+    This function will only return the value of a leaf if it's a left leaf */
+    public int leafVal(TreeNode temp, boolean isLeft) {
+        if (temp == null) { return 0; }
+        if (temp.left == null && temp.right == null && isLeft) {
+            return temp.val;
+        }
+        return leafVal(temp.left, true) + leafVal(temp.right, false);
+    }
+}
