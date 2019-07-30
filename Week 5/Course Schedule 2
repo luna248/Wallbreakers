@@ -1,0 +1,46 @@
+class Solution(object):
+    def findOrder(self, numCourses, prerequisites):
+        """
+        :type numCourses: int
+        :type prerequisites: List[List[int]]
+        :rtype: bool
+        """
+
+        #I have just modified the output from the approach I used in Course Schedule #1
+
+        incoming_graph = {}
+        in_degree= [0]*numCourses;
+
+        for course in prerequisites:
+            in_degree[course[0]] +=1
+            if course[1] in incoming_graph:
+                incoming_graph[course[1]].append(course[0]);
+            else:
+                incoming_graph[course[1]] = [];
+                incoming_graph[course[1]].append(course[0]);
+
+        Q = collections.deque()
+        order = collections.deque()
+        for x in range(numCourses):
+            if in_degree[x]==0:
+                Q.append(x)
+                order.append(x)
+
+        count = 0
+
+        #Loop to perform the topological sort
+        while Q:
+            x=Q.popleft()
+            count+=1
+            if x in incoming_graph:
+                for eachPrereq in incoming_graph[x]:
+                    in_degree[eachPrereq]-=1
+
+                    if in_degree[eachPrereq]==0:
+                        Q.append(eachPrereq)
+                        order.append(eachPrereq)
+
+        if count==numCourses:
+            return order
+        else:
+            return []

@@ -1,0 +1,49 @@
+class Solution(object):
+    def canFinish(self, numCourses, prerequisites):
+        """
+        :type numCourses: int
+        :type prerequisites: List[List[int]]
+        :rtype: bool
+        """
+
+        #I will be using Kahn's topological sort algorithm to solve this problem
+
+        #incoming_graph: adjacency list
+        incoming_graph = {}
+
+        #in_degree: List giving the number of classes that the course is a prereq for
+        in_degree= [0]*numCourses;
+
+        #building the graph with each course and what it's prerequisites are
+        #and filling in the in_degree list
+        for course in prerequisites:
+            in_degree[course[0]] +=1
+            if course[1] in incoming_graph:
+                incoming_graph[course[1]].append(course[0]);
+            else:
+                incoming_graph[course[1]] = [];
+                incoming_graph[course[1]].append(course[0]);
+
+        #using the deque data structure to perform the topological sort.
+        #Initialized with classes that have no prerequisites (i.e. in_degree is 0)
+        Q = collections.deque()
+        for x in range(numCourses):
+            if in_degree[x]==0:
+                Q.append(x)
+
+        #count: Int variable to keep track of the number of variables removed in the sort i.e. the total number of classes that can be taken as prereqs are being covered.
+        #In the end if this matches the total number of classes to be taken then we return true, else false.
+        count = 0
+
+        #Loop to perform the topological sort
+        while Q:
+            x=Q.popleft()
+            count+=1
+            if x in incoming_graph:
+                for eachPrereq in incoming_graph[x]:
+                    in_degree[eachPrereq]-=1
+
+                    if in_degree[eachPrereq]==0:
+                        Q.append(eachPrereq)
+
+        return count==numCourses

@@ -1,0 +1,15 @@
+NOTES
+
+Q. Course schedule:
+  For this problem, I have used Kahn's topological sort algorithm.
+  To implement it, I have used the following data structures:
+    1. Adjacency list: To create a directed graph
+    2. List: To keep track of dependencies
+    3. Deque: To eliminate vertices
+  Process:
+    * Start with vertices with no incoming edges
+    * Process them, remove them (from the deque) and process their outgoing edges from the graph
+    * Continue with this process till there's nothing left in the graph
+
+Q. Island Perimeter:
+  I thought this problem could be solved much faster with an algorithm not using graphs.
