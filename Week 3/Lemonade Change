@@ -1,4 +1,7 @@
 class Solution {
+
+    /*Since this is a greedy algorithm, I've separated all the cases that can
+    possibly occur and then found the results of those */
     public boolean lemonadeChange(int[] bills) {
         //Since we have no bills to begin with
         int fives = 0;

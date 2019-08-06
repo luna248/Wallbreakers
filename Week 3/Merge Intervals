@@ -1,0 +1,26 @@
+class Solution(object):
+    def merge(self, intervals):
+        """
+        :type intervals: List[List[int]]
+        :rtype: List[List[int]]
+        """
+        #Creating a new array for the output
+        merged = []
+
+        #Sort the input array first
+        intervals.sort()
+
+        #Now processing each pair of intervals in the input
+        #Add the first pair as is then compare the input for every pair after
+        #If it's within the range, then check which one of the greater value for the end of
+        #the interval and merge the cells
+        for apair in intervals:
+            if not merged:
+                merged.append(apair)
+            elif apair[0] <= merged[-1][1]:
+                if merged[-1][1] < apair[1]:
+                    merged[-1][1]= apair[1]
+            else:
+                merged.append(apair)
+
+        return merged
