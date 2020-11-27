@@ -1,0 +1,37 @@
+**Batch 1:**
+Medium:
+https://leetcode.com/problems/encode-and-decode-tinyurl
+Hard:
+https://leetcode.com/problems/valid-number
+https://leetcode.com/problems/critical-connections-in-a-network
+https://leetcode.com/problems/merge-k-sorted-lists
+https://leetcode.com/problems/concatenated-words 
+https://leetcode.com/problems/trapping-rain-water
+
+**Batch 2:**
+Hard:
+https://leetcode.com/problems/lfu-cache
+https://leetcode.com/problems/serialize-and-deserialize-binary-tree
+
+**Batch 3:**
+#### Leetcode difficulty rank: Easy
+https://leetcode.com/problems/n-ary-tree-postorder-traversal 
+https://leetcode.com/problems/squares-of-a-sorted-array 
+https://leetcode.com/problems/peak-index-in-a-mountain-array
+https://leetcode.com/problems/reverse-words-in-a-string-iii
+https://leetcode.com/problems/sort-array-by-parity-ii
+
+#### Leetcode difficulty rank: Medium
+https://leetcode.com/problems/maximum-level-sum-of-a-binary-tree
+https://leetcode.com/problems/battleships-in-a-board
+https://leetcode.com/problems/find-all-duplicates-in-an-array
+https://leetcode.com/problems/interval-list-intersections
+https://leetcode.com/problems/delete-nodes-and-return-forest
+
+#### Leetcode difficulty rank: Hard
+* These questions were specifically selected by frequency in being asked.
+https://leetcode.com/problems/number-of-atoms
+https://leetcode.com/problems/word-ladder-ii
+https://leetcode.com/problems/minimum-difficulty-of-a-job-schedule
+https://leetcode.com/problems/sliding-window-maximum 
+https://leetcode.com/problems/frog-jump
